@@ -1,0 +1,11 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+ 
+  
+  .logo{
+    margin-top:20px;
+    margin-left:20px;
+    width:100px;
+    height:67px;
+  }
