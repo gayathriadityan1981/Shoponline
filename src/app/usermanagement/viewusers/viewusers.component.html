@@ -1,0 +1,35 @@
+<div class="container">
+        <input [(ngModel)]="searchText" placeholder="Search.." class="advancedSearchTextbox">
+        <p></p>
+  <div class="row card-container">
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let user of users | filter: {firstName: searchText, country:searchText };">
+          <div class="card">
+              <div class="card-header">
+                  <a [routerLink]="['/users',user.userId,'details']" class="white">
+                      {{user.firstName }} 
+                  </a>
+                  <a [routerLink]="['/users',user.userId,'edit']">
+                         <mat-icon aria-label="edit" class="material-icons">edit</mat-icon>
+                              
+                  </a>
+              </div>
+              <div class="card-body">
+                  <div class="clearfix">
+                      <div class="pull-left card-body-left">
+                          <a href="#" class="white">
+                              <img src="../../../assets/images/{{ user.gender  }}.png" class="card-image" />
+                          </a>
+                      </div>
+                      <div class="pull-left card-body-right">
+                          <div class="card-body-content">{{user.address1 }}, {{user.address2}},{{user.country}}</div>
+                         
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div *ngIf="!users.length">
+          No Records  Found
+      </div>
+  </div>
+</div>

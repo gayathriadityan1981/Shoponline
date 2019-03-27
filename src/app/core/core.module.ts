@@ -3,6 +3,8 @@ import {RouterModule} from '@angular/router';
 import {NavbarComponent} from './navbar/navbar.component';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {AuthService} from '../core/services/auth.service';
+import {AuthInterceptor} from '../core/interceptors/auth.interceptor';
 
 import {
   MatButtonModule,
@@ -13,10 +15,9 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatTooltipModule,
-  MatToolbarModule,
-  MatTableModule//,
-  //MatTableDataSource
-} from '@angular/material';
+  MatToolbarModule,MatTableModule
+  } from '@angular/material';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 @NgModule({
     imports:[RouterModule,
       //material io
@@ -30,8 +31,7 @@ import {
       MatTooltipModule,
       MatToolbarModule,
       MatTableModule, 
-     // MatTableDataSource,
-      
+      MatIconModule, 
       ReactiveFormsModule //for form valildation
     ],
     exports:[RouterModule,NavbarComponent,
@@ -44,9 +44,16 @@ import {
       MatInputModule,
       MatTooltipModule,
       MatTableModule, 
-     // MatTableDataSource,
-      MatToolbarModule],
-    declarations:[NavbarComponent]
+      MatIconModule,
+      MatToolbarModule
+    ],
+    declarations:[NavbarComponent],
+    providers:[AuthService,
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi:true
+    }]
 })
 
 export class CoreModule extends EnsureModuleLoadedOnceGuard {    // Ensure that CoreModule is only loaded into AppModule

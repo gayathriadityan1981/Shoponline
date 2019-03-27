@@ -13,10 +13,24 @@
              <a mat-button routerLink="/about">About Us</a>
              <a mat-button routerLink="/customers">Customers</a>
              <a mat-button routerLink="/orders">Orders</a>
-             <a mat-button routerLink="/login">Login</a>
+             
+             <a mat-button routerLink="/users" >User Management</a>
+                <button mat-icon-button #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>  
+            <mat-menu #menu="matMenu">
+                <a routerLink="/users/viewUsers" mat-menu-item>View All Users</a>
+                <a routerLink="/users/registeruser"  mat-menu-item>Register</a>
+            </mat-menu>
+            <a mat-button routerLink="/reports" >Reports </a>
+            <a mat-button routerLink="/login"  >{{ loginLogoutText }}</a>
+            <a mat-button routerLink="/logout" (click)="logout()" >Logout</a>
             </mat-toolbar-row>
-        </mat-toolbar>
-        
+            
+            </mat-toolbar> 
+            
+          <!-- <label>{{childReference.userName}}</label>
+           <label style="line-height: 60px;"> userName now is{{userName}}</label> -->
         </div>
           
           

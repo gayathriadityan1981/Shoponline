@@ -2,14 +2,12 @@
     <div class="container">
         <header>
             <h3>
-                <span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Orders
+                <span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Orders {{userName}}
             </h3>
         </header>
         <br />
-
         <div class="container">
             <div *ngIf="customers">
-
                 <div class="row" *ngFor="let customer of customers;">
                     <h4>{{ customer.firstName }} {{ customer.lastName  }}</h4>
                     <br />
@@ -27,14 +25,10 @@
                         No orders found
                     </div> 
                 </div>
-
-               
-
             </div>
             <div *ngIf="!customers">
                 No customers found
             </div>
         </div>
-
     </div>
 </div>

@@ -1,0 +1,78 @@
+
+<h5 align="center">User Report Mangement</h5>
+<div class="fields-container">
+
+ <!-- <mat-form-field>
+    <mat-select placeholder="Types of Reports" (change)="generateReport($event)"  name="reporttype">
+        <mat-option value="user">User Reports</mat-option>
+        <mat-option value="order">Order Reports</mat-option>
+        <mat-option value="finance">Finance Reports</mat-option>
+    </mat-select>
+</mat-form-field>-->
+<form #form="ngForm" class="form form-horizontal formfields padding bg-p-grey tpadd15 bpadd20" autocomplete="off">
+ <div id="userDiv" >
+ <div class="col-md-8 no-padding" >
+ 
+   <div class="fields-container" >
+     <div *ngIf="userReportView">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input type="text" matInput name="name" [(ngModel)]="this.model.name" placeholder="Enter name"/><br>
+    </mat-form-field>
+    <mat-form-field>
+    <mat-label>Address1</mat-label>
+    <input type="text" matInput name="address1" [(ngModel)]="this.model.address1" placeholder="Enter address1"/><br>
+  </mat-form-field>
+  <mat-form-field>
+  <mat-label>Address2</mat-label>
+  <input type="text" matInput name="address2" [(ngModel)]="this.model.address2" placeholder="Enter address2"/><br>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>City</mat-label>
+    <input type="text" matInput name="city" [(ngModel)]="this.model.city" placeholder="Enter city"/><br>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>User Name</mat-label>
+      <input type="text" matInput name="username" [(ngModel)]="this.model.username" placeholder="Enter username"/><br>
+      </mat-form-field>
+      
+      <button (click)="generateUserReport()"  >Generate User Report</button>
+    
+    </div>
+<div class="table-responsive" *ngIf="userGrid">
+    
+  <table  mdbTable striped="true">
+    <thead class="black white-text">
+      <tr>
+          <th  class="th-lg">Id</th>
+        <th  class="th-lg">Name</th>
+        <th  class="th-lg">Address1</th>
+        <th  class="th-lg">Address 2</th>
+        <th  class="th-lg">City</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let arr of emp">
+
+            <td >{{arr.id}}</td>
+            <td>{{arr.name}}</td>
+            <td>{{arr.address1}}</td>
+            <td>{{arr.address2}}</td>
+            <td>{{arr.city}}</td>
+      </tr>
+   </tbody>
+  </table> 
+
+  </div>
+  
+  </div>
+  
+ </div>
+ </div>
+</form>
+
+   
+   <button (click)="exportToCSV(emp)"  *ngIf="exportTo">Export to CSV</button>
+  </div>
+  
+  

@@ -7,7 +7,7 @@
                         {{customer.firstName  }} {{ customer.lastName }} 
                     </a>
                     <a [routerLink]="['/customers',customer.customerId,'edit']">
-                            <mat-icon aria-label="edit" class="material-icons">edit</mat-icon>
+                           <mat-icon aria-label="edit" class="material-icons">edit</mat-icon>
                                 
                     </a>
                 </div>
@@ -15,11 +15,11 @@
                     <div class="clearfix">
                         <div class="pull-left card-body-left">
                             <a href="#" class="white">
-                                <img src="../../../assets/images/{{ customer.gender }}.png" class="card-image" />
+                                <img src="../../../assets/images/{{ customer.gender ||capitalize }}.png" class="card-image" />
                             </a>
                         </div>
                         <div class="pull-left card-body-right">
-                            <div class="card-body-content">{{customer.city }}, {{customer.state}}</div>
+                            <div class="card-body-content">{{customer.city }}, {{customer.state.name}}</div>
                             <mat-icon aria-label="add_shopping_cart" class="material-icons">add_shopping_cart</mat-icon>
                             <a [routerLink]="['orders',customer.customerId]">View Orders</a>
                         </div>
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div *ngIf="!customers.length">
-            No Records Found
+            No Records  Found
         </div>
     </div>
 </div>

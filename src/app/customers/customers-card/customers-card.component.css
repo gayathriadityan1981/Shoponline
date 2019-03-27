@@ -3,17 +3,18 @@
 }
 
 .card {
-    background-color:#fff;
+    background-color:rgb(245, 158, 158);
     border: 1px solid #d4d4d4;
-    height:120px;
+    height:210px;
     margin-bottom: 20px;
     position: relative;
+    width:180px;
 }
 
 .card-header {
     background-color:#027FF4;
     font-size:14pt;
-    color:white;
+    color:black;
     padding:5px;
     width:100%;
 }
@@ -46,7 +47,7 @@
 }
 
 .white {
-    color: white;
+    color: black;
 }
 
 .white:hover {

@@ -9,7 +9,7 @@ import { ICustomer } from '../../shared/interfaces';
   styleUrls: [ './customers-card.component.css' ],
   // When using OnPush detectors, then the framework will check an OnPush
   // component when any of its input properties changes, when it fires
-  // an event, or when an observable fires an event ~ Victor Savkin (Angular Team)
+  // an event, or when an observable fires an event 
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CustomersCardComponent implements OnInit {

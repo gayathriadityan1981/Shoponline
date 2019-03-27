@@ -1,0 +1,21 @@
+<div class="header">
+  <mat-toolbar color="primary">
+          
+    
+    <mat-toolbar-row>
+            <!--  <span>HOME</span> -->
+             
+            <span class="spacer"></span>
+            <span><h2> User Management</h2></span>
+             <span class="spacer"></span>
+             <a mat-button 
+             (click)="changeDisplayMode(displayModeEnum.Card)" [class.active]="displayMode === displayModeEnum.Card">Card View</a>
+             <a mat-button 
+             (click)="changeDisplayMode(displayModeEnum.Grid)" [class.active]="displayMode === displayModeEnum.Grid">List View</a>
+             <a mat-button routerLink="/users/registeruser">Register User </a>
+           
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <app-viewusers         [users]="users"  ></app-viewusers>       
+
+        </div>

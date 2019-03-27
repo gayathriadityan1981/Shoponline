@@ -1,3 +1,68 @@
-<p>
-  customer-edit works!
-</p>
+
+<mat-card-content>
+
+    <!--<div class="fields-container">-->
+      <mat-form-field  class="full-width">
+        <mat-label>First Name</mat-label>
+        <input type="text" matInput  [(ngModel)]="model.firstName" placeholder="Enter first name"/><br>
+      </mat-form-field>
+      <mat-form-field  class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input type="text" matInput  [(ngModel)]="this.model.lastName" placeholder="Enter Last name"/><br>
+      </mat-form-field>
+      <mat-form-field  class="full-width">
+      <mat-label>Address1</mat-label>
+      <input type="text" matInput  [(ngModel)]="this.model.address1" placeholder="Enter address1"/><br>
+    </mat-form-field>
+    <mat-form-field  class="full-width">
+    <mat-label>Address2</mat-label>
+    <input type="text" matInput [(ngModel)]="this.model.address2" placeholder="Enter address2"/><br>
+    </mat-form-field>
+    <mat-form-field  class="full-width">
+        <mat-label>City</mat-label>
+        <input type="text" matInput  [(ngModel)]="this.model.city" placeholder="Enter city"/><br>
+        </mat-form-field>      
+    <mat-form-field  class="full-width">
+      <mat-label>Country</mat-label>
+      <input type="text" matInput  [(ngModel)]="this.model.country" placeholder="Enter country"/><br>
+      </mat-form-field>
+    
+      <mat-form-field  class="full-width">
+        <mat-label>Company</mat-label>
+        <input type="text" matInput  [(ngModel)]="this.model.company" placeholder="Enter Company"/><br>
+        </mat-form-field>
+        <mat-form-field  class="full-width">
+          <mat-label>Phone</mat-label>
+          <input type="text" matInput numbersOnly  [(ngModel)]="this.model.phone" placeholder="Enter phone"/><br>
+          </mat-form-field>
+          
+      <mat-form-field  class="full-width">
+        <mat-label>Email</mat-label>
+        <input type="text" matInput [(ngModel)]="this.model.email" placeholder="Enter username"/><br>
+        </mat-form-field>
+        <mat-form-field  class="full-width">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput [(ngModel)]="this.model.password" placeholder="Enter password"/><br>
+          </mat-form-field>
+          <mat-form-field  class="full-width">
+            <mat-label>Postal</mat-label>
+            <input type="text" matInput  [(ngModel)]="this.model.postal" placeholder="Enter postal"/><br>
+            </mat-form-field>
+            <mat-form-field  class="full-width">
+              <mat-label>Role</mat-label>
+              <input type="text" matInput  [(ngModel)]="this.model.role" placeholder="Enter role"/><br>
+              </mat-form-field>
+              <!-- <mat-form-field  class="full-width">
+                  <mat-label>State</mat-label>
+                   <mat-select placeholder="State" name="state"  [(ngModel)]="this.model.state">
+                  <mat-option *ngFor="let state of states" >
+                      {{state}}
+                  </mat-option>
+              </mat-select> </mat-form-field> -->
+         
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="saveUser(this.model)" color="primary">REGISTER</button>
+          <button  mat-raised-button (click)="refresh()" color="primary">Refresh</button>
+        </mat-card-actions>
+   

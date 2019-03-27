@@ -1,0 +1,93 @@
+
+<mat-card-content>
+
+<!--<div class="fields-container">-->
+  <mat-form-field  class="full-width">
+    <mat-label>First Name</mat-label>
+    <input type="text" matInput  [(ngModel)]="this.model.firstName" placeholder="Enter first name"/><br>
+  </mat-form-field>
+  <mat-form-field  class="full-width">
+    <mat-label>Last Name</mat-label>
+    <input type="text" matInput  [(ngModel)]="this.model.lastName" placeholder="Enter Last name"/><br>
+  </mat-form-field>
+  <mat-form-field  class="full-width">
+  <mat-label>Address1</mat-label>
+  <input type="text" matInput  [(ngModel)]="this.model.address1" placeholder="Enter address1"/><br>
+</mat-form-field>
+<mat-form-field  class="full-width">
+<mat-label>Address2</mat-label>
+<input type="text" matInput [(ngModel)]="this.model.address2" placeholder="Enter address2"/><br>
+</mat-form-field>
+<mat-form-field  class="full-width">
+  <mat-label>Country</mat-label>
+  <input type="text" matInput  [(ngModel)]="this.model.country" placeholder="Enter country"/><br>
+  </mat-form-field>
+  <mat-form-field  class="full-width">
+    <mat-label>Company</mat-label>
+    <input type="text" matInput  [(ngModel)]="this.model.company" placeholder="Enter Company"/><br>
+    </mat-form-field>
+    <mat-form-field  class="full-width">
+      <mat-label>Phone</mat-label>
+      <input type="text" matInput numbersOnly  [(ngModel)]="this.model.phone" placeholder="Enter phone"/><br>
+      </mat-form-field>
+      
+  <mat-form-field  class="full-width">
+    <mat-label>Email</mat-label>
+    <input type="text" matInput [(ngModel)]="this.model.email" placeholder="Enter username"/><br>
+    </mat-form-field>
+    <mat-form-field  class="full-width">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput [(ngModel)]="this.model.password" placeholder="Enter password"/><br>
+      </mat-form-field>
+      <mat-form-field  class="full-width">
+        <mat-label>Postal</mat-label>
+        <input type="text" matInput  [(ngModel)]="this.model.postal" placeholder="Enter postal"/><br>
+        </mat-form-field>
+        <mat-form-field  class="full-width">
+          <mat-label>Role</mat-label>
+          <input type="text" matInput  [(ngModel)]="this.model.role" placeholder="Enter role"/><br>
+          </mat-form-field>
+          <mat-select placeholder="Security Question " name="securityQuestion"  [(ngModel)]="this.model.securityQuestion">
+              <mat-option *ngFor="let securityQuestion of securityQuestions" [value]="securityQuestion">
+                  {{securityQuestion}}
+              </mat-option>
+          </mat-select>
+            <mat-form-field  class="full-width">
+              <mat-label>Security Answer</mat-label>
+              <input type="text" matInput  [(ngModel)]="this.model.securityAnswer" placeholder="Enter Security Answer"/><br>
+              </mat-form-field>          
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="saveUser(this.model)" color="primary">REGISTER</button>
+      <button  mat-raised-button (click)="refresh()" color="primary">Refresh</button>
+    </mat-card-actions>
+<!--</div>
+<button (click)="saveUser(this.model)">Register</button>
+<button (click)="refresh()">Refresh</button>-->
+
+
+<!--
+<mat-card-content>
+  <form class="my-form">
+     <mat-form-field >
+            <mat-label>First Name</mat-label>
+            <input  matInput  placeholder="First name"  name="fname"  required>
+         </mat-form-field>
+         <mat-form-field >
+            <mat-label>Last Name</mat-label>
+            <input  matInput  placeholder="Last Name" name="lname"  required>
+         </mat-form-field>
+         <mat-form-field >
+            <mat-label>Address</mat-label>
+            <input  matInput  placeholder="Address" name="address"  required>
+         </mat-form-field>
+         <mat-form-field >
+            <mat-label>Email</mat-label>
+            <input  matInput  placeholder="Email" name="email">
+         </mat-form-field>
+         <mat-form-field >
+            <mat-label>Password</mat-label>
+            <input  matInput  placeholder="Password"  name="password">
+         </mat-form-field>
+  </form>
+</mat-card-content>-->

@@ -6,15 +6,17 @@ import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { CustomerDetailsComponent } from './customer/customer-details/customer-details.component';
-import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
-import { CustomerOrdersComponent } from './customer/customer-orders/customer-orders.component';
+import { FormsModule } from '@angular/forms';
+//import { NavbarComponent } from './core/navbar/navbar.component';
+//import { LoginComponent } from './login/login.component';
+import {UserInfoService,LoginInfoInStorage} from './core/services/api/user-info.service';
+import {ApiRequestService} from './core/services/api/api-request.service';
 @NgModule({
   declarations: [
     AppComponent,
-    CustomerDetailsComponent,
-    CustomerEditComponent,
-    CustomerOrdersComponent  
+//    NavbarComponent,
+//    LoginComponent
+    
   ],
   imports: [
     BrowserModule,  
@@ -22,10 +24,10 @@ import { CustomerOrdersComponent } from './customer/customer-orders/customer-ord
     AppRoutingModule ,//Main module for routes in this project
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule 
+    HttpClientModule ,FormsModule
 ],
 exports: [],
-  providers: [],
+  providers: [UserInfoService,ApiRequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

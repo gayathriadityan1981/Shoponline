@@ -2,20 +2,23 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes } from '@angular/router';
 
 export interface ICustomer {
-    id: number;
-    firstName: string;
-    lastName: string;
-    gender: string;
-    address: string;
-    city: string;
-    state: IState;
-    orders?: IOrder[];
-    orderTotal?: number;
-    latitude?: number;
-    longitude?: number;
+    id: number,
+    firstName: string,
+    lastName: string,
+    email:string,
+    company:string,
+    phone:string,
+    gender: string,
+    address1: string,
+    address2: string,
+    city: string,
+    postalcode:string,
+    country:string,
+    
 }
 
 export interface IState {
+    stateId:number;
     abbreviation: string;
     name: string;
 }
@@ -44,4 +47,37 @@ export interface IUserLogin {
 export interface IApiResponse {
     status: boolean;
     error?: string;
+}
+export class IUser{
+    customerId:string;
+	firstName:string;
+	lastName:string;
+	customerPhone:string;
+	shippingAddress:string;
+	gender:string;
+    city:string;
+    stateId:string;
+    userId:string;
+    cartId:string;    
+}
+export class User{
+    userId:number;
+    email:string;
+    password:string;
+    firstName:string;
+    lastName:string;
+    address1:string;
+    address2:string;
+    company:string;
+    country:string;
+    role:string;
+    phone:string;
+   // token:string;
+   securityProviderId:number=1234;
+   defaultCustomerId:any;
+   isActive:boolean;
+   secretQuestion:string;
+   secretAnswer:string;
+   enableBetaTesting:boolean=true;
+   enableRenewal:boolean=true;
 }

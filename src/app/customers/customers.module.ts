@@ -1,11 +1,44 @@
 import {NgModule} from '@angular/core';
 import {CustomersRoutingModule} from './customers-routing.module';
-import { CustomersGridComponent } from './customers-grid/customers-grid.component';
-import { CustomersCardComponent } from './customers-card/customers-card.component';
 import { SharedModule } from '../shared/shared.module';
+import {
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTooltipModule,
+    MatToolbarModule,MatTableModule
+    } from '@angular/material';
 @NgModule({
-    imports:[CustomersRoutingModule,SharedModule],
-    declarations:[CustomersRoutingModule.components, CustomersGridComponent, CustomersCardComponent]
+    imports:[CustomersRoutingModule,SharedModule, //material io
+        MatButtonModule,
+        MatMenuModule,
+        MatIconModule,
+        MatCardModule,
+        MatSidenavModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatTooltipModule,
+        MatToolbarModule,
+        MatTableModule, 
+        MatIconModule],
+    declarations:[CustomersRoutingModule.components],
+    exports:[
+        MatButtonModule,
+        MatMenuModule,
+        MatIconModule,
+        MatCardModule,
+        MatSidenavModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatTooltipModule,
+        MatTableModule, 
+        MatIconModule,
+        MatToolbarModule
+      ]
 })
 
 export class CustomersModule{
