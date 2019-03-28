@@ -51,33 +51,34 @@ getCustomers(): Observable<ICustomer[]> {
       );
 }
 
-getCustomer(id: number): Observable<ICustomer> {
-  return this.http.get<ICustomer>(this.customersBaseUrl + '/' + id)
+getCustomer(customerId: number): Observable<ICustomer> {
+  console.log("----data service---------------"+customerId);
+  return this.http.get<ICustomer>('http://localhost:8009/customers'+ '/' + customerId)
       .pipe(
           map(customer => {
-              this.calculateCustomersOrderTotal([customer]);
+             // this.calculateCustomersOrderTotal([customer]);
               return customer;
           }),
           catchError(this.handleError)
       );
 }
 
-insertCustomer(customer: ICustomer): Observable<ICustomer> { 
+saveCustomer(customer: ICustomer): Observable<ICustomer> { 
 
     return this.http.post<ICustomer>('http://localhost:8009/customers/saveCustomer',customer)
       .pipe(catchError(this.handleError));
 }
 
 updateCustomer(customer: ICustomer): Observable<boolean> {
-  return this.http.put<IApiResponse>(this.customersBaseUrl + '/' + customer.id, customer)
+  return this.http.put<IApiResponse>(this.customersBaseUrl + '/' + customer.customerId, customer)
       .pipe(
           map(res => res.status),
           catchError(this.handleError)
       );
 }
 
-deleteCustomer(id: number): Observable<boolean> {
-  return this.http.delete<IApiResponse>(this.customersBaseUrl + '/' + id)
+deleteCustomer(id: number): Observable<any> {
+  return this.http.delete<any>('http://localhost:8009/customers/deleteCustomer' + '/' + id)
       .pipe(
           map(res => res.status),
           catchError(this.handleError)

@@ -23,7 +23,9 @@
                 <a routerLink="/users/registeruser"  mat-menu-item>Register</a>
             </mat-menu>
             <a mat-button routerLink="/reports" >Reports </a>
+            <a mat-button routerLink="/products" >Products </a>
             <a mat-button routerLink="/login"  >{{ loginLogoutText }}</a>
+            <label (userNameChange)='changeUserName($event)'></label>
             <a mat-button routerLink="/logout" (click)="logout()" >Logout</a>
             </mat-toolbar-row>
             

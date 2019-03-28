@@ -11,12 +11,14 @@ import { FormsModule } from '@angular/forms';
 //import { LoginComponent } from './login/login.component';
 import {UserInfoService,LoginInfoInStorage} from './core/services/api/user-info.service';
 import {ApiRequestService} from './core/services/api/api-request.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-//    NavbarComponent,
-//    LoginComponent
     
+   
+   
   ],
   imports: [
     BrowserModule,  

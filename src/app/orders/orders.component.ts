@@ -18,13 +18,13 @@ export class OrdersComponent implements OnInit {
   customers: ICustomer[];
   totalRecords = 0;
   pageSize = 5;
-  @Input() userName:string;
+ 
   
   constructor(private dataService: DataService, private authService:AuthService
     ) { 
      this.authService.currentUser.subscribe(
         data => {
-        this.userName=data.firstName;
+       
         },
         (err: HttpErrorResponse) => {
           console.log (err.message);

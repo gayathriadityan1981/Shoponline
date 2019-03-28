@@ -1,22 +1,27 @@
-import {Component,OnInit,OnDestroy,Input, ViewChild, AfterViewInit, ElementRef} from '@angular/core';
+import {Component,OnInit,OnDestroy,Input, ViewChild, AfterViewInit, ElementRef, OnChanges} from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../core/services/auth.service';
 import { UserService } from '../../services/user.service';
 import {HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { LoginComponent } from 'src/app/login/login.component';
+import { User } from 'src/app/shared/interfaces';
 @Component({
     selector:'app-navbar',
     templateUrl:'./navbar.component.html',
     styleUrls: ['./navbar.component.css']
 })
 
-export class NavbarComponent implements OnInit,OnDestroy {
+export class NavbarComponent implements OnInit,OnDestroy,OnChanges {
 
 isCollapsed:boolean;
 loginLogoutText='Login';
 subscription:Subscription;
 public user: string="";
+
+public currentUserKey:string="currentUser";
+public storage:Storage = sessionStorage; 
+
 @ViewChild(LoginComponent) childReference: LoginComponent;
 constructor(
     private router:Router,
@@ -32,6 +37,7 @@ constructor(
             console.log("already logged in");
             this.setLoginLogoutText();
         }
+        
        
     }
 ngOnInit(){
@@ -102,7 +108,9 @@ setUserName(){
         }
       );
 }
-ngAfterViewInit() {
-    //console.log(this.childReference.userName); // 👶 I am a child!
+ngOnChanges() {
+   
+    console.log("-----------"+this.storage.getItem(this.currentUserKey));
   }
+ 
 }

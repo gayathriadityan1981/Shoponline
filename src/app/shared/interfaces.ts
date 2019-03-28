@@ -2,7 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes } from '@angular/router';
 
 export interface ICustomer {
-    id: number,
+    customerId: number,
     firstName: string,
     lastName: string,
     email:string,
@@ -16,7 +16,14 @@ export interface ICustomer {
     country:string,
     
 }
-
+export class IProduct{
+    product_id : string;
+    product_img : string;
+    product_name : string;
+    product_price : number;
+    product_details : string;
+    product_quantity : number;
+}
 export interface IState {
     stateId:number;
     abbreviation: string;

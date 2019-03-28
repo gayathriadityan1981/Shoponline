@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
   public landingPage:string = "/order";
   model:any={};
   errMsg:string='';
+  @Output() userNameChanged=new EventEmitter();
+
   constructor(
    private router :Router,
     private loginService :LoginService,
@@ -38,6 +40,7 @@ login() {
                   this.errMsg = 'Username or password is incorrect';
                   return;
               }
+              this.userNameChanged.emit({ username:this.model.username});
               this.router.navigate([resp.landingPage]);
           },
           errResponse => {

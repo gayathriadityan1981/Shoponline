@@ -3,6 +3,7 @@ import { Routes, RouterModule,PreloadAllModules,NoPreloading } from '@angular/ro
 
 const app_routes: Routes = [
   {path:'about',loadChildren:'./about/about.module#AboutModule' },
+  {path:'products',loadChildren:'./products/products.module#ProductsModule' },
   {path:'customers',loadChildren:'./customers/customers.module#CustomersModule'},
   {path:'orders',loadChildren:'./orders/orders.module#OrdersModule'},
   {path:'login',loadChildren:'./login/login.module#LoginModule'},

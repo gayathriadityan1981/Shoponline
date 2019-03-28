@@ -6,7 +6,8 @@ import {CustomersGridComponent} from '../customers/customers-grid/customers-grid
 import {CustomerEditComponent} from '../customer/customer-edit/customer-edit.component';
 const routes:Routes=[
     {path:'',component:CustomersComponent},
-    {path:'edit',component:CustomerEditComponent}
+    {path:'edit',component:CustomerEditComponent},
+    {path:':id/details',component:CustomerEditComponent}
 ]
 
 @NgModule({

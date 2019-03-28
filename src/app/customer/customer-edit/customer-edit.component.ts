@@ -3,10 +3,9 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import {HttpErrorResponse} from '@angular/common/http/src/response';
 import { DataService } from '../../core/services/data.service';
+
 //import { ModalService, IModalContent } from '../../core/modal/modal.service';
 import { ICustomer, IState } from '../../shared/interfaces';
-//import { GrowlerService, GrowlerMessageType } from '../../core/growler/growler.service';
-//import { LoggerService } from '../../core/services/logger.service';
 @Component({
   selector: 'app-customer-edit',
   templateUrl: './customer-edit.component.html',
@@ -17,9 +16,9 @@ import { ICustomer, IState } from '../../shared/interfaces';
 export class CustomerEditComponent implements OnInit {
 
   model:ICustomer;
-  customer: ICustomer =
+  customer: ICustomer;/*=
     {
-      id: 0,
+      customerId: 0,
       firstName: '',
       lastName: '',
       email:'',
@@ -33,7 +32,7 @@ export class CustomerEditComponent implements OnInit {
       country:'',
      
      
-    };
+    };*/
   states: IState[];
  
   errorMessage: string;
@@ -43,60 +42,42 @@ export class CustomerEditComponent implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private dataService: DataService,
-   // private growler: GrowlerService,
-   // private modalService: ModalService,
-  //  private logger: LoggerService
-  ) { 
-    this.dataService.getStates().subscribe(
-      data => {
-       this.states = data;
-       console.log("--------states---------"+this.states)
-      },
-      (err: HttpErrorResponse) => {
-        console.log (err.message);
-      }
-    );
-
+    private dataService: DataService) {
+    
   }
 
   ngOnInit() {
-    // Subscribe to params so if it changes we pick it up. Don't technically need that here
-    // since param won't be changing while component is alive.
-    // Could use this.route.parent.snapshot.params["id"] to simplify it.
-  /*  this.route.parent.params.subscribe((params: Params) => {
-      const id = +params['id'];
-      console.log("------id----------"+id);
-      if (id !== 0 ) {
-        this.operationText = 'Update';
-        this.getCustomer(id);
-      }
-    });*/
-    
-   // this.dataService.getStates().subscribe((states: IState[]) => this.states = states);
-   // this.states=[{abbreviation:'TN',name:'Tamilnadu'},{abbreviation:'KA',name:'Karnataka'}];
-   // console.log("----this.states-------"+this.states[0].abbreviation)
+    const id = +this.route.snapshot.params["id"];
+    console.log("-------id-----------"+id);
+    this.getCustomer(id);
   }
 
   getCustomer(id: number) {
+    console.log("--edit get--------"+id);
     this.dataService.getCustomer(id).subscribe((customer: ICustomer) => {
       this.customer = customer;
-    });
-  }
+    },
+    (err: HttpErrorResponse) => {
+      console.log("-----edit cust----errr-");
+      console.log (err.message);
+    }
+  );
+}
 
   submit() {
-    if (this.customer.id === 0) {
-      console.log("---this.customer.id --------"+this.customer.id )
-      this.dataService.insertCustomer(this.customer)
+    //console.log("---this.customer.id --------"+this.customer.customerId)
+    if (this.customer.customerId === 0) {
+      console.log("---this.customer.id --------"+this.customer.customerId )
+      this.dataService.saveCustomer(this.customer)
         .subscribe((insertedCustomer: ICustomer) => {
           console.log("--insertedCustomer ----saved----"+insertedCustomer )
           if (insertedCustomer) {
             // Mark form as pristine so that CanDeactivateGuard won't prompt before navigation
-            this.customerForm.form.markAsPristine();
+          //  this.customerForm.form.markAsPristine();
             this.router.navigate(['/customers']);
           } else {
             const msg = 'Unable to insert customer';
-             console.log("--------err-----"+msg);
+             console.log("--------Unable to insert customer-----"+msg);
           //  this.growler.growl(msg, GrowlerMessageType.Danger);
             this.errorMessage = msg;
           }
@@ -104,6 +85,7 @@ export class CustomerEditComponent implements OnInit {
           (err: any) => console.log("--------err-----"+err)//this.logger.log(err)
           );
     } else {
+      console.log("----else column----");
       this.dataService.updateCustomer(this.customer)
         .subscribe((status: boolean) => {
           if (status) {
@@ -121,7 +103,19 @@ export class CustomerEditComponent implements OnInit {
         );
     }
   }
-
+  saveCustomer(model:ICustomer){
+    console.log("------save-------"+model);
+    this.dataService.saveCustomer(model).subscribe(
+      data => {         
+          this.router.navigate(['/customers']);   
+      //  this.model = data as string[];		// FILL THE ARRAY WITH DATA.
+      },
+      (err: HttpErrorResponse) => {
+        console.log("-----save----errr-");
+        console.log (err.message);
+      }
+    );
+  }
   cancel(event: Event) {
     event.preventDefault();
     // Route guard will take care of showing modal dialog service if data is dirty
@@ -130,13 +124,14 @@ export class CustomerEditComponent implements OnInit {
 
   delete(event: Event) {
     event.preventDefault();
-    this.dataService.deleteCustomer(this.customer.id)
-      .subscribe((status: boolean) => {
-        if (status) {
+    this.dataService.deleteCustomer(this.customer.customerId)
+      .subscribe((status: any) => {
+        console.log("--------status-----"+status);
+       /* if (status) {
           this.router.navigate(['/customers']);
         } else {
           this.errorMessage = 'Unable to delete customer';
-        }
+        }*/
       },
       (err: any) => console.log("--------err-----"+err)//this.logger.log(err)
       );
