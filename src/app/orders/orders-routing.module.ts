@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OrdersComponent } from './orders.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
-  { path: '', component: OrdersComponent }
+  { path: '', component: OrdersComponent },
+  { path:':id/cartDetails',component:CartComponent}
 ];
 
 @NgModule({
@@ -11,5 +13,5 @@ const routes: Routes = [
   exports: [ RouterModule ]
 })
 export class OrdersRoutingModule {
-  static components = [ OrdersComponent ];
+  static components = [ OrdersComponent,CartComponent ];
 }

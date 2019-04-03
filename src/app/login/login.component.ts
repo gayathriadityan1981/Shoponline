@@ -1,4 +1,4 @@
-import { Component, OnInit,Input,EventEmitter,Output } from '@angular/core';
+import { Component, OnInit,Input,EventEmitter,Output ,NgZone} from '@angular/core';
 import { Router } from '@angular/router';
 import { ValidationService} from '../core/services/validation.service';
 import { AuthService } from '../core/services/auth.service';
@@ -12,7 +12,7 @@ import {ApiRequestService} from '../core/services/api/api-request.service';
   providers:[ValidationService,AuthService,LoginService]
 })
 export class LoginComponent implements OnInit {
-  public landingPage:string = "/order";
+  public landingPage:string = "/products/viewPdtsServer";
   model:any={};
   errMsg:string='';
   @Output() userNameChanged=new EventEmitter();
@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
    private router :Router,
     private loginService :LoginService,
     private apiRequest:ApiRequestService,
-    private authService:AuthService
+    private authService:AuthService,
+    private zone:NgZone
   ){}
   ngOnInit(){
     //reset login status
@@ -41,7 +42,14 @@ login() {
                   return;
               }
               this.userNameChanged.emit({ username:this.model.username});
-              this.router.navigate([resp.landingPage]);
+              console.log("=========resp.user.role========"+resp.user.role)
+          
+              this.zone.run(() => {                
+                this.router.navigate([resp.landingPage]);                
+            
+              });
+             
+              
           },
           errResponse => {
             switch(errResponse.status){
@@ -59,5 +67,8 @@ login() {
             }
           }
       );
+}
+changeUsername(data){
+console.log("----------data---------"+data);
 }
   }

@@ -16,23 +16,7 @@ import { ICustomer, IState } from '../../shared/interfaces';
 export class CustomerEditComponent implements OnInit {
 
   model:ICustomer;
-  customer: ICustomer;/*=
-    {
-      customerId: 0,
-      firstName: '',
-      lastName: '',
-      email:'',
-      company:'',
-      phone:'',
-      gender: '',
-      address1: '',
-      address2: '',
-      city: '',
-      postalcode:'',
-      country:'',
-     
-     
-    };*/
+  customer: ICustomer;
   states: IState[];
  
   errorMessage: string;
@@ -48,7 +32,6 @@ export class CustomerEditComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.params["id"];
-    console.log("-------id-----------"+id);
     this.getCustomer(id);
   }
 

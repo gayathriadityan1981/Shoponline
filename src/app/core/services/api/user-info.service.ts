@@ -5,6 +5,7 @@ export interface UserInStorage{
     email:string;
     displayName:string;
     token:string;
+    role:string;
 }
 
 export interface LoginInfoInStorage{
@@ -30,6 +31,7 @@ export class UserInfoService {
     //Remove userinfo from session storage
     removeUserInfo() {
         this.storage.removeItem(this.currentUserKey);
+        this.storage.removeItem('cart');
     }
 
     //Get userinfo from session storage

@@ -36,6 +36,9 @@ export class DataService {
   listCustomers(): Observable<any> {
     return this.http.get<any>('http://localhost:8009/customers/getAllCustomers');   
    }
+   listProducts(): Observable<any> {
+    return this.http.get<any>('http://localhost:8009/products/getAllProducts');   
+   }
    listOrders():Observable<any>{
     return this.http.get<any>('http://localhost:8009/orders/getAllOrders');   
    }

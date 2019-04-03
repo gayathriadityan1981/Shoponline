@@ -22,6 +22,7 @@ export class OrdersComponent implements OnInit {
   
   constructor(private dataService: DataService, private authService:AuthService
     ) { 
+      console.log("----------login------constr-------");
      this.authService.currentUser.subscribe(
         data => {
        
@@ -33,6 +34,7 @@ export class OrdersComponent implements OnInit {
      }
 
   ngOnInit() {
+    console.log("-----------login------ngoninit-------");
       this.getCustomersPage(1);
   }
 

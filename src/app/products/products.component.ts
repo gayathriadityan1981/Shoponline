@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import {IProduct} from './product';
 import {Subject} from 'rxjs';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',

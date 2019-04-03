@@ -13,8 +13,8 @@ export interface LoginRequestParam{
   providedIn: 'root'
 })
 export class LoginService {
-
-  public landingPage:string = "/orders";
+  isAuthenticated:boolean;
+  public landingPage:string = "/products/viewPdtsServer";
     constructor(
         private router:Router,
         private userInfoService: UserInfoService,
@@ -54,9 +54,11 @@ export class LoginService {
                             "email"      : jsonResp.item.emailAddress,
                             "displayName": jsonResp.item.firstName + " " + jsonResp.item.lastName,
                             "token"      : jsonResp.item.token,
+                            "role"       : jsonResp.item.role
+
                         }
                     };
-
+                   this.isAuthenticated=true;
                     // store username and jwt token in session storage to keep user logged in between page refreshes
                     this.userInfoService.storeUserInfo(JSON.stringify(loginInfoReturn.user));
                 }
@@ -67,7 +69,7 @@ export class LoginService {
                      "message":jsonResp.msgDesc,
                         "landingPage":"/login"
                  };
-                   
+                 this.isAuthenticated=false;
                 }
                 loginDataSubject.next(loginInfoReturn);
             },

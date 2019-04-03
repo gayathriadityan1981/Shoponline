@@ -43,7 +43,7 @@ export class ApiRequestService {
     }
 
     post(url:string, body:Object):Observable<any>{
-        console.log("----------url--------"+this.baseApiPath + url);
+       
         let me = this;
         return this.http.post(this.baseApiPath + url, JSON.stringify(body), { headers:this.getHeaders()});
         /*

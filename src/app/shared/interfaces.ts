@@ -88,3 +88,62 @@ export class User{
    enableBetaTesting:boolean=true;
    enableRenewal:boolean=true;
 }
+export interface Product{
+     id:number;
+     productCode:string;
+     productName:string;
+     description:string;
+     standardCost:number;
+     listPrice:number;
+     targetLevel:number;
+     reorderLevel:number;
+     minimumReorderQuantity:number;
+     quantityPerUnit:string;
+     discontinued:number;
+     category:string;
+}
+export interface OrderItem{  
+   cartId:number;
+   product:Product;
+   quantity:number;
+   //subtotal:number;
+
+//    // orderItemKey:CompositeOrderProductKey;//orderid+productid is the key
+//     productId:number;
+//     quantity    :number;
+//     unitPrice :number;
+//     discount   :number;
+//     dateAllocated:string;
+//     orderItemStatus :string;
+}
+export class CompositeOrderProductKey{
+    orderId:number;
+    productId:number;
+}
+export class OrderLine{
+productId:number;
+productCode:string;
+productName:string;
+category:string;
+quantity:number;
+unitPrice:number;
+discount:number;
+dateAllocated:string;
+orderItemStatus:string;
+}
+
+export interface Order{
+    cartId:number;
+    orderId:number;
+    userId:number;
+    paymentType:string;
+    total:number;
+    orderDate:any;
+    status:string;
+}
+export interface OrderDetail{
+    customerName:string;
+    customerEmail:string;
+    customerMobile:string;
+    orderLine:OrderLine[];
+}

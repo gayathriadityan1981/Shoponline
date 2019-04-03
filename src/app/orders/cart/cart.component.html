@@ -1,0 +1,33 @@
+<h3>Cart Details</h3>
+<table border="1">
+        <tr>
+            <th>
+                <a [routerLink]="['../../../products/viewPdtsServer']" > Add More to Cart</a>
+            </th>
+        </tr>
+    <tr>
+        <th>Option</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+    </tr>
+    <tr *ngFor="let item of items">
+        <td align="center">
+             <a (click)="remove(item.product.id)">X</a> 
+        </td>
+        <td>{{item.product.id}}</td>
+        <td>{{item.product.productName}}</td>
+        <td>{{item.product.listPrice}}</td>
+        <td><input type="text" #quantity (keyup.enter)="update(quantity.value,item.product.listPrice)" (blur)="update(quantity.value,item.product.listPrice)"></td>
+        <td>{{subtotal}}</td>
+    </tr>
+    <tr>
+        <td colspan="6" align="right">Total</td>
+        <td>{{total}}</td>
+    </tr>
+    <tr>
+        <td>  <button class="btn btn-danger" (click)="finaliseOrder()" > Finalise Order</button></td>
+    </tr>
+</table>

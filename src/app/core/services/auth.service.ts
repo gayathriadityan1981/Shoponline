@@ -101,24 +101,9 @@ getUserName():string{
       return null;
   }
 }
-/*
+
 login(userLogin:User){
-  return this.http.post<any>('http://localhost:8009/auth/login',userLogin)
-  .pipe(map(user=>{
-    //login successful if there is a jwt token in the response
-  //  if(user&&user.token){
-      console.log("------user----------"+user);
-      console.log("------user.token----"+user.token);
-      //store user details and jwt token in local storage to keep user logged in between page references
-      localStorage.setItem('currentUser',JSON.stringify(user));
-     // this.currentUserSubject.next(user);      
-  //  }
-   // return user;
-  }))
-}*/
-login(userLogin:User){
-  console.log("model----user service------"+userLogin.email);
- // return this.http.post('http://localhost:8009/auth/login/',userLogin).pipe(map(res=>res));
+
  return this.http.post<any>('http://localhost:8009/auth/login/',userLogin).pipe(map(user=>{
   //if(user&&user.token){
     if(user){

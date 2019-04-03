@@ -1,7 +1,5 @@
 <div class="header">
   <mat-toolbar color="primary">
-          
-    
     <mat-toolbar-row>
             <!--  <span>HOME</span> -->
              <span><a href="/">
@@ -10,7 +8,7 @@
             <span class="spacer"></span>
             <span><h2> Online Store</h2></span>
              <span class="spacer"></span>
-             <a mat-button routerLink="/about">About Us</a>
+             <!-- <a mat-button routerLink="/about">About Us</a> -->
              <a mat-button routerLink="/customers">Customers</a>
              <a mat-button routerLink="/orders">Orders</a>
              
@@ -23,16 +21,22 @@
                 <a routerLink="/users/registeruser"  mat-menu-item>Register</a>
             </mat-menu>
             <a mat-button routerLink="/reports" >Reports </a>
-            <a mat-button routerLink="/products" >Products </a>
+            <a mat-button routerLink="/products" >Product Management</a>
+                <button mat-icon-button #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="pdt">
+                    <mat-icon>more_vert</mat-icon>
+                 </button>  
+            <mat-menu #pdt="matMenu">
+                <a routerLink="/products/viewProductsClient" mat-menu-item>View Products Indicator</a>
+                <a routerLink="/products/viewPdtsServer"  mat-menu-item>View Products from DB</a>
+            </mat-menu>
             <a mat-button routerLink="/login"  >{{ loginLogoutText }}</a>
-            <label (userNameChange)='changeUserName($event)'></label>
-            <a mat-button routerLink="/logout" (click)="logout()" >Logout</a>
+           
+            <a mat-button routerLink="/login" (click)="logout()" >Logout</a>
             </mat-toolbar-row>
             
             </mat-toolbar> 
             
-          <!-- <label>{{childReference.userName}}</label>
-           <label style="line-height: 60px;"> userName now is{{userName}}</label> -->
+        
         </div>
           
           

@@ -11,5 +11,5 @@
     <div class="s-login-pg-foot">
         <div *ngIf="errMsg" style="color:indianred; font-weight: bold">{{errMsg}}</div>
     </div>
-
+    <cm-username [username]='username' (usernameChanged)=changeUsername($event)></cm-username> 
 </div>
