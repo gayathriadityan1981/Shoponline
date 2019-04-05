@@ -22,12 +22,13 @@
         <td>{{item.product.listPrice}}</td>
         <td><input type="text" #quantity (keyup.enter)="update(quantity.value,item.product.listPrice)" (blur)="update(quantity.value,item.product.listPrice)"></td>
         <td>{{subtotal}}</td>
+        <td>  <button class="btn btn-danger" (click)="updateCartDetails(quantity.value,item.product.listPrice)" > Update Cart Details</button></td>
     </tr>
     <tr>
         <td colspan="6" align="right">Total</td>
         <td>{{total}}</td>
     </tr>
     <tr>
-        <td>  <button class="btn btn-danger" (click)="finaliseOrder()" > Finalise Order</button></td>
+        <td>  <button class="btn btn-danger" (click)="finaliseCart()" > Finalise Cart</button></td>
     </tr>
 </table>

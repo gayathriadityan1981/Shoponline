@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   @Output() userNameChanged=new EventEmitter();
 
   constructor(
-   private router :Router,
+    private router :Router,
     private loginService :LoginService,
     private apiRequest:ApiRequestService,
     private authService:AuthService,

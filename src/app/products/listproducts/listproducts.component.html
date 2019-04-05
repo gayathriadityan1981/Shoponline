@@ -1,38 +1,30 @@
 <div class="container">
-  <div class="row grid-container">
-      <div class="col-md-10">
-          <div class="table">
-              <table class="table table-striped table-hover">
-                  <thead>
-                      <tr>
+        <div class="row card-container">
+            <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let product of products;">
+                <div class="card">
+                    <div class="card-header">
+                        <a [routerLink]="['/products',product.id,'details']" class="white">
+                            {{product.productName  }} 
+                        </a>
+                        {{product.description }} 
                         
-                          <th cmSortBy="productCode" (sorted)="sort($event)">Product Code</th>
-                          <th cmSortBy="productName" (sorted)="sort($event)">Product Name</th>
-                          <th cmSortBy="category" (sorted)="sort($event)">Category</th>
-                          <th cmSortBy="price" (sorted)="sort($event)">Price</th>
-                          <th>Action</th>
-                          <th>&nbsp;</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr *ngFor="let product of products;">
-                          <td><a [routerLink]="['/products',product.id,'details']">{{ product.productCode  }}</a></td>
-                          <td>{{ product.productName  }}</td>
-                          <td>{{ product.category }}</td>
-                          <td>{{ product.listPrice  }}</td>
-
-                          <td>
-                             <a [routerLink]="['/orders',product.id,'cartDetails']" *ngIf="userBtnVisibility"> Add To Cart</a>
-                              <button class="btn btn-danger" (click)="deleteProduct(product)" *ngIf="adminBtnVisibility"> Delete</button>
-                              <button class="btn btn-danger" (click)="editProduct(product)" *ngIf="adminBtnVisibility" style="margin-left: 20px;"> Edit</button></td>
-                      </tr>
-                      <tr *ngIf="!products.length">
-                          <td>&nbsp;</td>
-                          <td colspan="7">No Records Found</td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-      </div>
-  </div>
-</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="clearfix">
+                            <div class="pull-left card-body-left">
+                                <a href="#" class="white">
+                                    <img src="../../../assets/images/{{ product.productImage}}" class="card-image" />
+                                </a>
+                            </div>
+                            <div class="pull-left card-body-right">
+                                <div class="card-body-content">{{product.stockQuantity }} {{product.stockStatus }},<a [routerLink]="['/products',product.id,'details']">Buy Now</a> </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="!products.length">
+                No Records  Found
+            </div>
+        </div>
+    </div>

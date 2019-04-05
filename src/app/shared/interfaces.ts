@@ -106,7 +106,7 @@ export interface OrderItem{
    cartId:number;
    product:Product;
    quantity:number;
-   //subtotal:number;
+   subTotal:number;
 
 //    // orderItemKey:CompositeOrderProductKey;//orderid+productid is the key
 //     productId:number;
@@ -146,4 +146,11 @@ export interface OrderDetail{
     customerEmail:string;
     customerMobile:string;
     orderLine:OrderLine[];
+}
+
+export interface Cart{
+    cartId:number;
+    userId:string;
+    cartItems:OrderItem[];
+    billAmount:number;
 }

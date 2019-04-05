@@ -1,0 +1,16 @@
+
+<div id="wrapper">
+    <div id="left"> <img class="pdtPic" src="../../../assets/images/{{product.productImage}}"/></div>
+    <div id="middle">
+        <h5> {{product.productName}}</h5>
+        <h5>{{product.description}}</h5>
+    </div>
+    <div id="right">
+        <h5>{{product.listPrice}}</h5>
+        <p>In Stock</p>
+        <div *ngIf="orderCondition">
+           <a [routerLink]="['/orders',product.id,'cartDetails']"  > Add To Cart</a>
+        </div>
+    </div>
+    
+  </div>

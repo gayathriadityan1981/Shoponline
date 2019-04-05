@@ -4,9 +4,10 @@ import {FormsModule} from "@angular/forms";
 import { CommonModule} from '@angular/common';
 import { StockstatusComponent } from './stockstatus/stockstatus.component';
 import {ListproductsComponent} from '../products/listproducts/listproducts.component';
+import { EditproductComponent } from './editproduct/editproduct.component';
 @NgModule({
     imports:[ProductsRoutingModule, CommonModule,FormsModule ],
-    declarations:[ProductsRoutingModule.components, StockstatusComponent,ListproductsComponent],
+    declarations:[ProductsRoutingModule.components, StockstatusComponent,ListproductsComponent, EditproductComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA ] ,
 
 })

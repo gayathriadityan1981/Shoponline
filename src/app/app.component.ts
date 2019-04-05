@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+
 @Component({
   selector: 'app-root',
  // selector: 'cm-app-component',
@@ -9,4 +10,5 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AppComponent {
   title = 'shoponline';
+ 
 }

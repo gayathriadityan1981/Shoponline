@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule ,CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -12,14 +12,11 @@ import { FormsModule } from '@angular/forms';
 import {UserInfoService,LoginInfoInStorage} from './core/services/api/user-info.service';
 import {ApiRequestService} from './core/services/api/api-request.service';
 
-
+import {ListproductsComponent} from './products/listproducts/listproducts.component'
 @NgModule({
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [
-    AppComponent,
-    
-    
-   
-   
+    AppComponent
   ],
   imports: [
     BrowserModule,  
